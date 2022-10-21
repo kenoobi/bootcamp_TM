@@ -18,8 +18,8 @@ Scenario: Search options
     When try log in
     And login success
     And search Employee id <employee_id>
-    Then validate employee id <employee_id>
+    Then validate employee id
 
     Examples:
-      | employee_id |
-      | 0267 |
+      |employee_id|
+      |0099|

@@ -39,7 +39,7 @@ public class Steps {
     @When("login success")
     public void login_success(){
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        Assert.assertEquals(true, driver.findElement(By.cssSelector(".oxd-topbar-header")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector(".oxd-topbar-header")).isDisplayed());
     }
 
     @When("click on each menu option")
@@ -49,24 +49,21 @@ public class Steps {
     }
 
     @Then("validate option")
-    public void validate_menu_option(String menu_option){
+    public void validate_menu_option(){
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        Assert.assertEquals(true, driver.findElement(By.cssSelector(".oxd-topbar-header-breadcrumb")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector(".oxd-topbar-header-breadcrumb")).isDisplayed());
+        driver.quit();
     }
 
-    @When("^search Employee id (\\d+)$")
-    public void search_employee_id(int employee_id) throws Throwable {
+    @When("^search Employee id (.*)$")
+    public void search_id(String employee) {
         PIM pim = new PIM(driver);
-        pim.search_employee_id(employee_id);
+        pim.search_employee_id(employee);
         pim.click_on_search();
     }
 
-    @Then("^validate employee id (\\d+)$")
-    public void validate_employee_id(int employee_id) throws Throwable {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        // Assert.assertEquals(true, driver.findElement(By.cssSelector("[role='row'] [role='cell']:nth-child(2)")).isDisplayed());
-        Assert.assertEquals(employee_id,driver.findElement(By.cssSelector("[role='row'] [role='cell']:nth-child(2)")).getAttribute("text") );
+    @Then("validate employee id")
+    public void validate_employee_id() {
+        Assert.assertTrue(driver.findElement(By.cssSelector("[role='row'] [role='cell']:nth-child(2)")).isDisplayed());
     }
-
-
 }
