@@ -29,6 +29,4 @@ public class MenuPage {
         return txt_menu.size();
     }
 
-
-
 }

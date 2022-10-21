@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageObjects.Login;
 import pageObjects.MenuPage;
+import pageObjects.PIM;
 
 import java.time.Duration;
 
@@ -52,4 +53,20 @@ public class Steps {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Assert.assertEquals(true, driver.findElement(By.cssSelector(".oxd-topbar-header-breadcrumb")).isDisplayed());
     }
+
+    @When("^search Employee id (\\d+)$")
+    public void search_employee_id(int employee_id) throws Throwable {
+        PIM pim = new PIM(driver);
+        pim.search_employee_id(employee_id);
+        pim.click_on_search();
+    }
+
+    @Then("^validate employee id (\\d+)$")
+    public void validate_employee_id(int employee_id) throws Throwable {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        // Assert.assertEquals(true, driver.findElement(By.cssSelector("[role='row'] [role='cell']:nth-child(2)")).isDisplayed());
+        Assert.assertEquals(employee_id,driver.findElement(By.cssSelector("[role='row'] [role='cell']:nth-child(2)")).getAttribute("text") );
+    }
+
+
 }

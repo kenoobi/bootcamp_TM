@@ -5,7 +5,7 @@ Scenario: Search dresses
   When try log in
   Then login success
 
-Scenario: Menu options
+Scenario: Search options
   Given start the web
   When try log in
   And login success
@@ -13,4 +13,13 @@ Scenario: Menu options
   Then validate option
 
 
+  Scenario Outline: Search PIM
+    Given start the web
+    When try log in
+    And login success
+    And search Employee id <employee_id>
+    Then validate employee id <employee_id>
 
+    Examples:
+      | employee_id |
+      | 0267 |
