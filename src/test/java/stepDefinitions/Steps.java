@@ -1,6 +1,5 @@
 package stepDefinitions;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -87,6 +86,31 @@ public class Steps {
     public void validate_popup() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Assert.assertTrue(driver.findElement(By.cssSelector(".orangehrm-card-container")).isDisplayed());
+    }
+
+    @When("click on txt url")
+    public void click_on_txt_url(){
+        Login login = new Login(driver);
+        login.click_on_btn_orange_inc();
+    }
+
+    @Then("validate web site")
+    public void validate_web_site(){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Assert.assertTrue(driver.findElement(By.partialLinkText("orangehrm.com")).isDisplayed());
+    }
+
+    @When("click on add employee")
+    public void click_on_add_employee(){
+        PIM pim = new PIM(driver);
+        pim.click_on_add_employee();
+        pim.click_on_save_employee();
+    }
+
+    @Then("validate the required fields")
+    public void validate_required_fields(){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Assert.assertTrue(driver.findElement(By.cssSelector(".oxd-input-group__message")).isDisplayed());
     }
 
 }

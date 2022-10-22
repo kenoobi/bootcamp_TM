@@ -29,3 +29,15 @@ Scenario: Search forgot pwd
   And copy the username and click on the button reset pwd
   Then validate popup
 
+Scenario: Search web page from button
+  Given start the web
+  When click on txt url
+  Then validate web site
+
+Scenario: trying to Add employee without data
+  Given start the web
+  When try log in
+  And login success
+  And click on add employee
+  Then validate the required fields
+

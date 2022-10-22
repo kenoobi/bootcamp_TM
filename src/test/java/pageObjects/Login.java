@@ -24,6 +24,8 @@ public class Login {
     @FindBy(how = How.CSS, using = ".orangehrm-login-forgot-header")
     private WebElement btn_forgot_pwd;
 
+    @FindBy(how = How.CSS, using = ".orangehrm-copyright-wrapper [target='_blank']")
+    private WebElement btn_orange_inc;
 
     public void enter_username(String name) {
         txtbx_Username.sendKeys(name);
@@ -45,6 +47,10 @@ public class Login {
 
     public void click_on_forogt_pwd(){
         btn_forgot_pwd.click();
+    }
+
+    public void click_on_btn_orange_inc(){
+        btn_orange_inc.click();
     }
 
 }
