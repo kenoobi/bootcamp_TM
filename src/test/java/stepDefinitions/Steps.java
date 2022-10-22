@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import pageObjects.Login;
 import pageObjects.MenuPage;
 import pageObjects.PIM;
+import pageObjects.Reset;
 
 import java.time.Duration;
 
@@ -64,6 +66,27 @@ public class Steps {
 
     @Then("validate employee id")
     public void validate_employee_id() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Assert.assertTrue(driver.findElement(By.cssSelector("[role='row'] [role='cell']:nth-child(2)")).isDisplayed());
     }
+
+    @When("click on forgot password")
+    public void click_on_forgot_password() {
+        Login login = new Login(driver);
+        login.click_on_forogt_pwd();
+    }
+
+    @When("copy the username and click on the button reset pwd")
+    public void copy_username_click_on_reset_pwd() {
+        Reset reset = new Reset(driver);
+        reset.fill_username("Admin");
+        reset.click_on_reset_pwd();
+    }
+
+    @Then("validate popup")
+    public void validate_popup() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Assert.assertTrue(driver.findElement(By.cssSelector(".orangehrm-card-container")).isDisplayed());
+    }
+
 }
