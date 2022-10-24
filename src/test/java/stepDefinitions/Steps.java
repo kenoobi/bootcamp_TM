@@ -28,6 +28,14 @@ public class Steps {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
+    @When("^try log in with (.*) and (.*)$")
+    public void try_login_with_username_and_password(String username, String password){
+        Login login = new Login(driver);
+        login.enter_username(username);
+        login.enter_pwd(password);
+        login.clickOn_BtnLogin();
+    }
+
     // Behavior
     @When("try log in")
     public void try_log_in() {
@@ -38,9 +46,18 @@ public class Steps {
 
     // Asserts
     @When("login success")
-    public void login_success(){
+    public void login_success() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        //success message
+        Assert.assertEquals(true, driver.findElement(By.cssSelector(".oxd-topbar-header")).isDisplayed() ||
+                driver.findElement(By.cssSelector(".oxd-input-group__message")).isDisplayed() ||
+                driver.findElement(By.cssSelector(".oxd-alert-content-text")).isDisplayed());
+    }
+
+    @When("login non success")
+    public void login_non_success(){
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        Assert.assertTrue(driver.findElement(By.cssSelector(".oxd-topbar-header")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector(".oxd-input-field-error-message")).isDisplayed());
     }
 
     @When("click on each menu option")

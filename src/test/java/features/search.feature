@@ -1,9 +1,15 @@
 Feature: Search
 
-Scenario: Search dresses
+Scenario Outline: Login successful
   Given start the web
-  When try log in
+  When try log in with <username> and <password>
   Then login success
+
+  Examples:
+  | username | password |
+  | Admin | admin123 |
+  | | |
+  | test1 | test123 |
 
 Scenario: Search options
   Given start the web
