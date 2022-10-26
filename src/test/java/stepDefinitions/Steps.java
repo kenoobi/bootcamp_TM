@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -130,4 +131,178 @@ public class Steps {
         Assert.assertTrue(driver.findElement(By.cssSelector(".oxd-input-group__message")).isDisplayed());
     }
 
+    @And("click on profile and click log out")
+    public void clickOnProfileAndClickLogOut() {
+        MenuPage menuPage = new MenuPage(driver);
+        menuPage.click_on_profile();
+        menuPage.click_on_logOut();
+    }
+
+    @Then("validate the log out")
+    public void validateTheLogOut() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Assert.assertTrue(driver.findElement(By.cssSelector(".orangehrm-login-logo")).isDisplayed());
+    }
+
+    @And("click on about button into profile")
+    public void clickOnAboutButtonIntoProfile() {
+        MenuPage menuPage = new MenuPage(driver);
+        menuPage.click_on_profile();
+        menuPage.click_on_about();
+    }
+
+    @Then("validate the profile fields")
+    public void validateTheProfileFields() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Assert.assertTrue(driver.findElement(By.cssSelector(".oxd-dialog-sheet")).isDisplayed());
+    }
+
+    @And("click on time option")
+    public void clickOnTimeOption() {
+        MenuPage menuPage = new MenuPage(driver);
+        menuPage.click_on_time();
+        menuPage.click_on_view_time_option();
+    }
+
+    @Then("Validate found data")
+    public void validateFoundData() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Assert.assertTrue(driver.findElement(By.cssSelector("[data-v-77b08b9a='']")).isDisplayed());
+    }
+
+    @And("click on dashboard option")
+    public void clickOnDashboardOption() {
+        MenuPage menuPage = new MenuPage(driver);
+        menuPage.click_on_dashboard_option();
+    }
+
+    @Then("validate image of launching soon")
+    public void validateImageOfLaunchingSoon() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Assert.assertTrue(driver.findElement(By.cssSelector(".orangehrm-module-under-development")).isDisplayed());
+    }
+
+    @And("click on directory option")
+    public void clickOnDirectoryOption() {
+        MenuPage menuPage = new MenuPage(driver);
+        menuPage.click_on_directory_option();
+    }
+
+    @Then("validate the data of the directory")
+    public void validateTheDataOfTheDirectory() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Assert.assertTrue(driver.findElement(By.cssSelector(".orangehrm-container")).isDisplayed());
+    }
+
+    @And("click on buzz option")
+    public void clickOnBuzzOption() {
+        MenuPage menuPage = new MenuPage(driver);
+        menuPage.click_on_buzz_option();
+    }
+
+    @And("click on support button")
+    public void clickOnSupportButton() {
+        MenuPage menuPage = new MenuPage(driver);
+        menuPage.click_on_profile();
+        menuPage.click_on_profile_support();
+    }
+
+    @Then("validate the support window")
+    public void validateTheSupportWindow() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Assert.assertTrue(driver.findElement(By.cssSelector(".orangehrm-card-container")).isDisplayed());
+    }
+
+    @Then("click on button hide menu and validate")
+    public void clickOnButtonHideMenuAndValidate() {
+        MenuPage menuPage = new MenuPage(driver);
+        menuPage.click_on_menu_hide();
+        Assert.assertTrue(driver.findElement(By.cssSelector(".oxd-main-menu-item.toggle")).isDisplayed());
+    }
+
+    @And("click profile and password option")
+    public void clickProfileAndPasswordOption() {
+        MenuPage menuPage = new MenuPage(driver);
+        menuPage.click_on_profile();
+        menuPage.click_on_profile_password();
+    }
+
+    @Then("validate the update password screen")
+    public void validateTheUpdatePasswordScreen() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Assert.assertTrue(driver.findElement(By.cssSelector(".orangehrm-card-container")).isDisplayed());
+    }
+
+    @And("Search Admin in the search field")
+    public void searchAdminInTheSearchField() {
+        MenuPage menuPage = new MenuPage(driver);
+        menuPage.type_in_search_field("Admin");
+    }
+
+    @Then("validate that the found menu option is correct")
+    public void validateThatTheFoundMenuOptionIsCorrect() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Assert.assertTrue(driver.findElement(By.cssSelector("[href='/web/index.php/admin/viewAdminModule']")).isDisplayed());
+    }
+
+
+    @And("click on profile and log out option")
+    public void clickOnProfileAndLogOutOption() {
+        MenuPage menuPage = new MenuPage(driver);
+        menuPage.click_on_profile();
+        menuPage.click_on_profile_logout();
+    }
+
+    @Then("validate log out success")
+    public void validateLogOutSuccess() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Assert.assertTrue(driver.findElement(By.cssSelector(".orangehrm-login-slot")).isDisplayed());
+
+    }
+
+    @And("click on my info menu option")
+    public void clickOnMyInfoMenuOption() {
+        MenuPage menuPage = new MenuPage(driver);
+        menuPage.click_on_menu_my_info();
+    }
+
+    @Then("validate that the panel my info is available")
+    public void validateThatThePanelMyInfoIsAvailable() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Assert.assertTrue(driver.findElement(By.cssSelector(".orangehrm-background-container")).isDisplayed());
+    }
+
+
+    @And("click on maintenance option")
+    public void clickOnMaintenanceOption() {
+        MenuPage menuPage = new MenuPage(driver);
+        menuPage.click_on_menu_maintenance();
+    }
+
+
+    @And("type the admin password")
+    public void typeTheAdminPassword() {
+        MenuPage menuPage = new MenuPage(driver);
+        menuPage.type_in_maintenance_password("admin123");
+        menuPage.click_on_maintenance_confirm();
+    }
+
+    @Then("validate the window")
+    public void validateTheWindow() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Assert.assertTrue(driver.findElement(By.cssSelector(".orangehrm-background-container")).isDisplayed());
+    }
+
+    @And("click on menu recruitment option and click on the tag vacancies")
+    public void clickOnMenuRecruitmentOptionAndClickOnTheTagVacancies() {
+        MenuPage menuPage = new MenuPage(driver);
+        menuPage.click_on_menu_recruitment();
+        menuPage.click_on_recruitment_vacancies_tag();
+    }
+
+    @Then("validate if exist available vacancies")
+    public void validateIfExistAvailableVacancies() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Assert.assertTrue(driver.findElement(By.cssSelector(".oxd-table-row")).isDisplayed());
+    }
 }
